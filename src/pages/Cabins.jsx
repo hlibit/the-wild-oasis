@@ -11,13 +11,12 @@ function Cabins() {
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
-        <p>TEST</p>
       </Row>
       <Row>
         <CabinTable />
       </Row>
       <Button onClick={() => setShowForm((show) => !show)}>
-        Add new cabin
+        Add new Cabin
       </Button>
       {showForm && <CreateCabinForm />}
     </>
