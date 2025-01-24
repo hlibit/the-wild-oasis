@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import { data } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledTable = styled.div`
@@ -90,7 +89,7 @@ function Row({ children }) {
 }
 
 function Body({ items, render }) {
-  if (!data.length) return <Empty>No data to show</Empty>;
+  if (!items.length) return <Empty>No data to show right now</Empty>;
   return items.map(render);
 }
 
