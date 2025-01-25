@@ -4,9 +4,23 @@ import Menus from "../../ui/Menus";
 import Empty from "../../ui/Empty";
 import Spinner from "../../ui/Spinner";
 import { useBookings } from "./useBookings";
+import Pagination from "../../ui/Pagination";
+// import { useSearchParams } from "react-router-dom";
 
 function BookingTable() {
-  const { bookings, isPending } = useBookings();
+  const { isPending, bookings, count } = useBookings();
+
+  // uiSide pagination
+  // const [searchParams] = useSearchParams();
+  // const currentPage = !searchParams.get("page")
+  //   ? 1
+  //   : Number(searchParams.get("page"));
+
+  // const paginatedBookings =
+  //   bookings?.length <= 10
+  //     ? bookings
+  //     : bookings?.slice((currentPage - 1) * 10, currentPage * 10);
+
   if (isPending) return <Spinner />;
 
   if (!bookings.length) return <Empty resource="bookings" />;
@@ -24,11 +38,15 @@ function BookingTable() {
         </Table.Header>
 
         <Table.Body
+          // items={paginatedBookings}
           items={bookings}
           render={(booking) => (
             <BookingRow key={booking.id} booking={booking} />
           )}
         />
+        <Table.Footer>
+          <Pagination count={count} />
+        </Table.Footer>
       </Table>
     </Menus>
   );
