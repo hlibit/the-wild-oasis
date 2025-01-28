@@ -22,7 +22,6 @@ function BookingTable() {
   //     : bookings?.slice((currentPage - 1) * 10, currentPage * 10);
 
   if (isPending) return <Spinner />;
-
   if (!bookings.length) return <Empty resource="bookings" />;
 
   return (
